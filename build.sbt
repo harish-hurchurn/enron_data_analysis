@@ -1,5 +1,3 @@
-import EnronDataAnalysis._
-
 name := "Enron_Data_Analysis"
 
 lazy val enronDataAnalysis = (project in file("."))
@@ -22,3 +20,9 @@ val enronTopOneHundred = (project in file("top100"))
     libraryDependencies ++= EnronDataAnalysis.Dependencies.dependencies,
     version := "0.1.0"
   )
+
+fork in Test := true
+javaOptions ++= Seq("-Xms512M", "-Xmx2048M", "-XX:MaxPermSize=2048M", "-XX:+CMSClassUnloadingEnabled")
+parallelExecution in Test := false
+
+wartremoverWarnings ++= Warts.all

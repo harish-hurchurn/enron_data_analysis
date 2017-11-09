@@ -19,7 +19,7 @@ This is an Scala/SBT project and it is assumed that SBT has been installed and t
 - {TOP_LEVEL_SOURCE_DIRECTORY}/target/scala-2.11/top100-assembly-0.1.0.jar
 
 
-## How do I use it
+## How do I run it on the cluster
 The information below assumes that you have an appropriate setup on Amazon AWS 
 
 ### Submit job to EMR
@@ -32,3 +32,9 @@ spark-submit --deploy-mode cluster \
              --executor-memory 10g \
              --class co.ioctl.{either average-assembly-0.1.0.jar or top100-assembly-0.1.0.jar} s3://{LOCATION_OF_WHERE_JARS_ARE_STORED} 
 ```
+
+# TODO
+- Add integration tests
+- Application is currently only processing a subset of emails, run with entire dataset
+- Optimise memory settings
+- Update documentation as necessary

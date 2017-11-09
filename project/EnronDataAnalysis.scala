@@ -12,7 +12,9 @@ object EnronDataAnalysis {
       case PathList("META-INF", _) => MergeStrategy.discard
       case _ => MergeStrategy.first
     },
-
+    description := "Enron public email data analysis",
+    organizationName := "IOCTL Solutions",
+    organizationHomepage :=  Some(url("http://www.ioctl.co")),
     organization := "co.ioctl",
     parallelExecution in Test := false,
     resolvers += "apache-snapshots" at "http://repository.apache.org/snapshots/",

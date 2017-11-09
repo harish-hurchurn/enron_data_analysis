@@ -8,7 +8,6 @@ class EnronAverageSpec extends FreeSpec with Matchers with DataFrameSuiteBase {
 
   "The EnronAverage job" - {
     "should be able to load email data and return a dataframe of the loaded data " in {
-      import co.ioctl.top_100.EnronAverage
       val enronAverage = new EnronAverage(spark)
       val df = enronAverage.prepareData(dataPath)
 
@@ -16,7 +15,6 @@ class EnronAverageSpec extends FreeSpec with Matchers with DataFrameSuiteBase {
     }
 
     "should calculate the average word length" in {
-      import co.ioctl.top_100.EnronAverage
       val enronAverage = new EnronAverage(spark)
       val avarageDf = enronAverage.prepareData(dataPath)
       enronAverage.average(avarageDf) shouldBe 6.182664054848188
