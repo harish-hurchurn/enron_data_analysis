@@ -30,11 +30,17 @@ The information below assumes that you have an appropriate setup on Amazon AWS
 
 spark-submit --deploy-mode cluster \
              --executor-memory 10g \
-             --class co.ioctl.{either average-assembly-0.1.0.jar or top100-assembly-0.1.0.jar} s3://{LOCATION_OF_WHERE_JARS_ARE_STORED} 
+             --class co.ioctl.{either average-assembly-0.1.0.jar or top100-assembly-0.1.0.jar} s3://{LOCATION_OF_WHERE_DATA_FILE_IS} 
 ```
+# Assumptions
+
+## Average
+It is assumed that the average calculation the data is in text format
+
+## Top 100
+It is assumed that the data is in XML format as can be found here: https://archive.org/download/edrm.enron.email.data.set.v2.xml
 
 # TODO
 - Add integration tests
-- Application is currently only processing a subset of emails, run with entire dataset
 - Optimise memory settings
 - Update documentation as necessary

@@ -132,18 +132,13 @@ class EnronTop100Recepients(sparkSession: SparkSession) {
 object EnronTop100Recepients extends App {
   import org.apache.spark.{SparkConf, SparkContext}
 
-  val sparkConf = new SparkConf()
-    .setAppName("Top 100 emails")
+  val sparkConf = new SparkConf().setMaster("local[*]").setAppName("Top 100 emails")
 
   val sc = new SparkContext(sparkConf)
   sc.hadoopConfiguration.set("mapreduce.fileoutputcommitter.marksuccessfuljobs", "false")
   sc.hadoopConfiguration.set("parquet.enable.summary-metadata", "false")
 
-  val spark = SparkSession
-    .builder
-    .appName("top_100_from_emails")
-    .getOrCreate()
-
+  val spark = SparkSession.builder.appName("top_100_from_emails").getOrCreate()
   val top100 = new EnronTop100Recepients(spark)
 
   val outputPath: Unit = top100.convertFileToCSV(inputPath = args(0), outputPath = args(1))

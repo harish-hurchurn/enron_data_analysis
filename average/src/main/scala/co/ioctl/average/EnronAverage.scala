@@ -53,13 +53,9 @@ class EnronAverage(sparkSession: SparkSession) {
 object EnronAverage extends App {
   import org.apache.spark.{SparkConf, SparkContext}
 
-  val sparkConf = new SparkConf().setAppName("Enron average word count")
+  val sparkConf = new SparkConf().setMaster("local[*]").setAppName("Enron average word count")
   val sc = new SparkContext(sparkConf)
-
-  val spark = SparkSession
-    .builder
-    .appName("enron_average_word_count")
-    .getOrCreate()
+  val spark = SparkSession.builder.appName("enron_average_word_count").getOrCreate()
 
   val averageWordCount = new EnronAverage(spark)
   val df = averageWordCount.prepareData(args(0))
